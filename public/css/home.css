@@ -1,0 +1,23 @@
+.main_container .right_col{
+	border: 1px solid red;
+	/*position: relative;*/
+	top: 50px;
+}
+.main_container .right_col .info_users{
+	position: absolute;
+	top: 70px;
+	visibility: hidden;
+	display: none;
+}
+.main_container .right_col .info_skills{
+	position: absolute;
+	top: 70px;
+	visibility: hidden;
+	display: none;
+}
+.main_container .right_col .show_chart{
+	position: absolute;
+	top: 70px;
+	visibility: hidden;
+	display: none;
+}

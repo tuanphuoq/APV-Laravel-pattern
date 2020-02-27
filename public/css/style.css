@@ -1,0 +1,271 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+/*======== header ==========*/
+header {
+    width :100%;
+    background-color:#3B5997;
+    font-family: Arial, Helvetica, sans-serif;
+    /* border: 1px solid red; */
+}
+.content{
+    width:80%;
+    height: 100%;
+    margin: auto;
+    /* border: 1px solid red; */
+    display: flex;
+    padding-bottom: 5px;
+}
+.left{
+    width: 57%;
+    margin-top: 30px;
+    margin-left: 50px;
+}
+.left #logoFace{
+    width: 80%;
+    display: block;
+    color: white;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 19px;
+    text-decoration: none;
+    /* border: 1px solid red; */
+    
+}
+.right{
+    width: 43%;
+    /* border: 1px solid red; */
+}
+.right .input{
+    display : flex;
+    justify-content: space-between;
+}
+.right .elementInput{
+    margin-top: 10px;
+    display: inline-block;
+    width: 35%;
+    /* border: 1px solid red; */
+}
+.elementInput h6{
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    color: #fff;
+    margin-bottom: 5px;
+}
+.elementInput input{
+    width: 92%;
+    height: 23px;
+    border:1px solid #29487d;
+}
+.login {
+    width : 30%;
+}
+.login input{
+    width: 70%;
+    height: 25px;
+    margin-top: 40px;
+    background-color: #4267b2;
+    border-width: 0.1px;
+    border:1px solid #29487d;
+    color : #fff;
+    font-weight: 600;
+    /* border: 1px solid red; */
+}
+.login input:hover{
+    background-color:#3B5997;
+    cursor: pointer;
+}
+.right .forgotPass a{
+    font-size : 12px;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.7;
+    margin-left: 160px;
+    margin-top: 5px;
+}
+.right .forgotPass a:hover{
+    text-decoration: underline;
+}
+/*========== Main ===========*/
+main{
+    background: linear-gradient(white, #D3D8E8);
+    font-family: Arial, Helvetica, sans-serif;
+}
+.left{
+    /* border: 1px solid red; */
+}
+.left .sologan{
+    width : 80%;
+    /* border: 1px solid red; */
+}
+.sologan h3{
+    font-size: 20px;
+    font-weight : 700;
+    line-height: 29px;
+    color: #0e385f;
+}
+.sologan img{
+    width : 100%;
+}
+.left .listImg{
+    width: 80%;
+    visibility: hidden;
+    display: none;
+}
+.listImg img{
+    width: 20%;
+}
+main .right{
+    margin-top: 20px;
+    /* border: 1px solid red; */
+}
+.right h1{
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 48px;
+    color: #333;
+}
+.right h3{
+    font-size: 19px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #1d2129;
+    margin-bottom: 10px;
+}
+form{
+    width: 90%;
+}
+form .name{
+    width : 100%;
+    display : flex;
+    justify-content: space-between;
+    
+}
+form .name input{
+    display : block;
+    width : 48%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+    padding: 5px;
+}
+form .input1 input{
+    display: block;
+    width: 100%;
+    height: 40px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+    padding: 5px;
+}
+form .dob{
+    display : block;
+    margin-top: 15px;
+}
+form .dob .title{
+    display: block;
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 700;
+    color : #90949c;
+    margin-bottom: 5px;
+}
+.dob .option_dob{
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.option_dob select{
+    height: 35px;
+    width: 33%;
+}
+form .sex{
+    display : block;
+    margin-top: 10px;
+    position: relative;
+}
+form .sex .title{
+    font-size: 16px;
+    line-height: 21px;
+    font-weight: 700;
+    color : #90949c;
+}
+form .sex .gioitinh{
+    margin-top: 10px;
+}
+form .sex .gioitinh .radioBtn{
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 5px;
+}
+form .sex .gioitinh .radioBtn input{
+    margin-right: 5px;
+}
+form .sex .gioitinh .radioBtn span{
+    font-size: 18px;
+    line-height: 18px;
+    color: #1d2129;
+}
+/*extend of sex*/
+form .sex .extend{
+    visibility: hidden;
+    display: none;
+}
+.extend .pronoun select{
+    width: 100%;
+    height: 30px;
+    margin-top: 15px;
+}
+.extend .sex_title span{
+    font-size: 12px;
+    color: #90949c;
+}
+.extend .inputSex input{
+    width: 100%;
+    height: 40px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #bdc7d8;
+    padding: 5px;
+}
+form .info{
+    width: 79%;
+    margin-top: 20px;
+    font-size :11px;
+    font-weight: 400;
+    line-height: 15px;
+}
+form .info span{
+    color :#777;
+}
+form .info a{
+    color : #385898;
+    text-decoration: none;
+}
+form .info a:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
+.button button{
+    height: 40px;
+    width: 45%;
+    margin-top: 20px;
+    background: linear-gradient(#67ae55, #578843);
+    background-color: #69a74e;
+    box-shadow: inset 0 1px 1px #a4e388;
+    border-color: #3b6e22 #3b6e22 #2c5115;
+    border-radius: 5px;
+}
+.button button:hover{
+    background: linear-gradient(#79bc64, #578843);
+}
+.button button span{
+    font-size: 18px;
+    line-height: 18px;
+    font-weight: 700;
+    color: #fff;
+}

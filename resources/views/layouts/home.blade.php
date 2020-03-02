@@ -4,6 +4,7 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="images/favicon.ico" type="image/ico" />
@@ -48,7 +49,7 @@
           <!-- menu profile quick info -->
           <div class="profile clearfix">
             <div class="profile_pic">
-              <img src="images/img.jpg" alt="..." class="img-circle profile_img" id="change_avatar" data-toggle="modal" data-target="#myModal">
+              <img src="{{Auth::user()->avatar}}" alt="..." class="img-circle profile_img" id="change_avatar" data-toggle="modal" data-target="#myModal">
               {{-- change avatar modal --}}
               <div class="modal">
                 <div class="modal-content">
@@ -58,15 +59,21 @@
                   </div>
                   <div class="content">
                     <hr>
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" enctype="multipart/form-data" action="{{route('upFile')}}">
                       @csrf
                       <span>Chọn file ảnh để thay đổi</span>
-                      <input type="file" name="inputAvt">
+                      <input type="file" name="inputAvt" id="input-avt">
+
+                      <div class="direct">
+                        <button type="button" class="btn btn-danger btn-sm" id="close-modal">Đóng</button>
+                        <input type="submit" class="btn btn-success btn-sm" id="change-avt" value="Thay đổi">
+                      </div>
                     </form>
-                    <div class="direct">
-                      <button type="button" class="btn btn-danger btn-sm" id="close-modal">Đóng</button>
-                      <button type="button" class="btn btn-success btn-sm" id="change-avt">Thay đổi</button>
-                    </div>
+                  </div>
+                  <div class="footer">
+                    <span class="message" id="message" style="color: red">
+                      
+                    </span>
                   </div>
                 </div>
               </div>
@@ -75,7 +82,7 @@
             <div class="profile_info">
               <span>Xin chào</span>
               {{-- <h2>John Doe</h2> --}}
-              <h2>{{ $username }}</h2>
+              <h2>{{ Auth::user()->name }}</h2>
             </div>
           </div>
           <!-- /menu profile quick info -->
@@ -140,7 +147,7 @@
             <ul class=" navbar-right">
               <li class="nav-item dropdown open" style="padding-left: 15px;">
                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true" id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
-                  <img src="images/img.jpg" alt="">{{$username}}
+                  <img src="{{Auth::user()->avatar}}" alt="">{{Auth::user()->name}}
                 </a>
                 <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
                   <a class="dropdown-item"  href="javascript:;"> Profile</a>
@@ -163,7 +170,7 @@
                     <a class="dropdown-item">
                       <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                       <span>
-                        <span>{{$username}}</span>
+                        <span>{{Auth::user()->name}}</span>
                         <span class="time">3 mins ago</span>
                       </span>
                       <span class="message">
@@ -175,7 +182,7 @@
                     <a class="dropdown-item">
                       <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                       <span>
-                        <span>{{$username}}</span>
+                        <span>{{Auth::user()->name}}</span>
                         <span class="time">3 mins ago</span>
                       </span>
                       <span class="message">
@@ -187,7 +194,7 @@
                     <a class="dropdown-item">
                       <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                       <span>
-                        <span>{{$username}}</span>
+                        <span>{{Auth::user()->name}}</span>
                         <span class="time">3 mins ago</span>
                       </span>
                       <span class="message">
@@ -199,7 +206,7 @@
                     <a class="dropdown-item">
                       <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span>
                       <span>
-                        <span>{{$username}}</span>
+                        <span>{{Auth::user()->name}}</span>
                         <span class="time">3 mins ago</span>
                       </span>
                       <span class="message">
@@ -286,6 +293,9 @@
   <script src="../vendors/moment/min/moment.min.js"></script>
   <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
 
+
+  {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/js/fileinput.js" type="text/javascript"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/4.4.7/themes/fa/theme.js" type="text/javascript"></script> --}}
   <!-- Custom Theme Scripts -->
   <script src="../build/js/custom.min.js"></script>
   <script type="text/javascript" src="../js/home.js"></script>

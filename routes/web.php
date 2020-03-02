@@ -30,3 +30,6 @@ Route::group(['middleware'=>'auth'], function(){
     return view('layouts.home');
 	})->name('home');
 });
+
+//upload file to change avatar
+Route::post('upFile', 'UserController@changeAvatar')->name('upFile');

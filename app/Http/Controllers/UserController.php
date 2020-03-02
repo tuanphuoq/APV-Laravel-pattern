@@ -9,6 +9,9 @@ use App\Http\Requests;
 use App\User;
 use App\UserGroup;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Input;
 use DB;
 
 class UserController extends Controller
@@ -61,6 +64,10 @@ class UserController extends Controller
         return $username;
     }
 
+    //init $email_global global variable
+    // protected $email_global = "";
+
+
     public function login(Request $req) {
         $this->validate($req,[
         'email' => 'required',
@@ -71,9 +78,7 @@ class UserController extends Controller
         $password = $req->password;
         $data = ['email'=>$email, 'password'=>$password];
         if (Auth::attempt($data)) {
-            // return redirect()->route('home');
-            $username = $this->getUsername($email);
-            return view('layouts.home', compact('username'));
+            return redirect()->route('home');
         }
         return redirect()->route('login')
         ->with('error','Email đăng ký hoặc mật khẩu sai');
@@ -88,5 +93,30 @@ class UserController extends Controller
             return response()->json(['result'=>'true']);
         }
         else return response()->json(['result'=>'false']);
+    }
+
+    //change avatar
+    public function changeAvatar(Request $req)
+    {
+        $filename = $req->file("inputAvt")->getClientOriginalName("inputAvt");
+        $extend = $req->file("inputAvt")->getClientOriginalExtension("inputAvt");
+        if ($extend == 'jpg' || $extend == 'jpeg' || $extend == 'png' ) {
+            // unlink(public_path("\store\avt-1583141098.jpg"));
+
+            //delete old file
+            $user = Auth::user();
+            $avatar = $user->avatar;
+            if ($avatar != "") {
+                // $base = trim(' \store\ ');
+                unlink(public_path($avatar));
+            }
+            //store
+            $req->file("inputAvt")->move("store", 'avt-'.time().'.'.$extend);
+            $path = "store\avt-".time().'.'.$extend;
+            //update avatar column in users table
+            $user->avatar = $path;
+            $user->save();
+            return redirect()->route('home');
+        }
     }
 }

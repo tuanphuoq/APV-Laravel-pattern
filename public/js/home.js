@@ -1,3 +1,5 @@
+$.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') } });
+
 //event click show-chart
 $('#li-info-users').on('click', function(){
 	showId('info-users');
@@ -46,7 +48,8 @@ var modal = $('.modal');
 var btn = $('#change_avatar');
 var span = $('.close');
 var close = $('#close-modal');
-var change = $('#change-avt');
+var input = $('#input-avt');
+// var change = $('#change-avt');
 
 btn.click(function () {
 	modal.show();
@@ -66,6 +69,30 @@ close.click(function(){
 	modal.hide();
 });
 
-change.click(function(){
-	//change the avatar
+input.change(function(){
+	//check input file
+	var fullPath = document.getElementById('input-avt').value;
+	var fileName = getFileName(fullPath);
+	var extend = fileName.split('.').pop();
+
+	if (extend == "png" || extend == "jpg" || extend == "jpeg" ) {
+		$("#change-avt").attr("disabled", false);
+		document.getElementById("message").innerHTML = "";
+	}
+	else{
+		$("#change-avt").attr("disabled", true);
+		document.getElementById("message").innerHTML = "Sai định dạng file";
+	}
 });
+
+
+function getFileName(fullPath){
+	if (fullPath) {
+		var startIndex = (fullPath.indexOf('\\') >= 0 ? fullPath.lastIndexOf('\\') : fullPath.lastIndexOf('/'));
+		var filename = fullPath.substring(startIndex);
+		if (filename.indexOf('\\') === 0 || filename.indexOf('/') === 0) {
+			filename = filename.substring(1);
+		}
+		return filename;
+	}
+}

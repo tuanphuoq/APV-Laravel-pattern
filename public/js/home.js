@@ -38,3 +38,34 @@ function showId(id){
 	document.getElementById(id).style.visibility = 'visible';
 	document.getElementById(id).style.display = 'block';
 }
+
+// ==============================
+// ====== change avatar =========
+// ==============================
+var modal = $('.modal');
+var btn = $('#change_avatar');
+var span = $('.close');
+var close = $('#close-modal');
+var change = $('#change-avt');
+
+btn.click(function () {
+	modal.show();
+});
+
+span.click(function () {
+	modal.hide();
+});
+
+$(window).on('click', function (e) {
+	if ($(e.target).is('.modal')) {
+		modal.hide();
+	}
+});
+
+close.click(function(){
+	modal.hide();
+});
+
+change.click(function(){
+	//change the avatar
+});

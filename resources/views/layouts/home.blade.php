@@ -71,9 +71,7 @@
                     </form>
                   </div>
                   <div class="footer">
-                    <span class="message" id="message" style="color: red">
-                      
-                    </span>
+                    <span class="message" id="message" style="color: red"></span>
                   </div>
                 </div>
               </div>
